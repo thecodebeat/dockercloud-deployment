@@ -6,7 +6,7 @@ import sys
 import time
 
 MAX_RETRIES = 20
-RETRY_SLEEP = 1
+RETRY_SLEEP = 5
 
 def main():
   service = sys.argv[1]
