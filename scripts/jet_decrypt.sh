@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # The purpose of this script is to use `jet decrypt` with a codeship key from an
 # environment. One use case would be to keep an encrypted stackfile inside the
