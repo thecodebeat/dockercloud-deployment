@@ -1,0 +1,37 @@
+#!/usr/bin/env python
+
+import json
+import subprocess
+import sys
+
+
+def main():
+  for container_uuid in container_uuids(sys.argv[1]):
+    if is_running(container_uuid):
+      print container_uuid
+      sys.exit(0)
+  print 'No running containers'
+  sys.exit(1)
+
+
+def container_uuids(service):
+  output = subprocess.check_output([
+    'docker-cloud',
+    'service',
+    'inspect',
+    service,
+  ])
+  return map(get_uuid, json.loads(output)['containers'])
+
+
+def get_uuid(container_url):
+  return [x for x in container_url.split('/') if x][-1]
+
+
+def is_running(container_uuid):
+  output = subprocess.check_output(['docker-cloud', 'container', 'inspect', container_uuid])
+  return json.loads(output)['state'] == 'Running'
+
+
+if __name__ == '__main__':
+  main()
