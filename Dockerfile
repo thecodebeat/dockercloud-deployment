@@ -6,7 +6,7 @@ RUN apk add --update curl        \
                      python-dev  \
                      py-pip      \
     && pip install --upgrade pip \
-    && pip install docker-cloud
+    && pip install docker-cloud pyyaml
 
 # Install Codeship Jet toolchain.
 ENV JET_VERSION=1.13.4
