@@ -5,6 +5,7 @@ RUN apk add --update curl        \
                      python      \
                      python-dev  \
                      py-pip      \
+                     zip         \
     && pip install --upgrade pip \
     && pip install docker-cloud pyyaml
 
